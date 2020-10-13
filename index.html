@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trivia API</title>
+  <link
+      rel="shortcut icon"
+      href="https://lh3.googleusercontent.com/proxy/KPMFKyKDkvuZp9sbd6xlRDzxUCW058_CMoxXmJdmYsZ3n9I8HedQj3vfG0AcQLGqY-dEiWwP2s6wPqS38LuuPzVfewR7rlLois4Kh62Zec4P5MRKPQNBBbNjS-IpeSQpp59haCpjmg"
+    />
   <link rel="stylesheet" href="./css/styles.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
@@ -17,20 +21,15 @@
       />
     </div>
 
-    <!-- Categorias -->
+    <!-- Formulario de preguntas --> 
     <form id="form-type-question">
       <div class="card mb-3 mt-3 bg-info text-white">
         <div class="card-body row">
           <div class="col-md-6">
             <h5 class="card-title">Seleccione la categoria:</h5>
             <select class="form-control" id="trivia-categories"></select>
-
-            <div class="card-body row">
-              <div class="col-md-6">
-                <h5 class="card-title">Seleccione la dificultad:</h5>
-                <select class="form-control" id="trivia-categories"></select>
           </div>
-          <!-- Preguntas -->
+          
           <div class="col-md-6">
             <h5 class="card-title">Seleccione el tipo de pregunta:</h5>
             <select class="form-control" id="t-type">
@@ -38,21 +37,24 @@
               <option value="boolean">True / False</option>
             </select>
           </div>
-          <div class="col-md-6">
-            <h5 class="card-title">Seleccione la cantidad de preguntas:</h5>
-            <select class="form-control" id="t-type">
-              <option value="multiple">multiple</option>
-              <option value="boolean">True / False</option>
-            </select>
-          </div>
-          <button
-            type="submit"
-            id="boton1"
-            class="mt-3 mx-3 btn btn btn-light btn-block"
-          >
+                    
+              <div class="col-md-6">
+                <h5 class="card-title">Seleccione la dificultad:</h5>
+                <select class="form-control" id="trivia-dificultad"></select>
+              </div>
+            
+              <div class="col-md-6">
+                <h5 class="card-title">Seleccione la cantidad de Preguntas:</h5>
+                <select class="form-control" id="c-type">
+                  <option value="one">10</option>
+                  <option value="two">20</option>
+                  <option value="two">30</option>
+                </select>
+              </div>
+          <button type="submit" id="boton1"class="mt-3 mx-3 btn btn btn-light btn-block">
             Mostrar Preguntas
           </button>
-        </div>
+        
       </div>
     </form>
     <!-- Preguntas y Respuestas -->
