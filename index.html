@@ -24,11 +24,6 @@
           <div class="col-md-6">
             <h5 class="card-title">Seleccione la categoria:</h5>
             <select class="form-control" id="trivia-categories"></select>
-
-            <div class="card-body row">
-              <div class="col-md-6">
-                <h5 class="card-title">Seleccione la dificultad:</h5>
-                <select class="form-control" id="trivia-categories"></select>
           </div>
           <!-- Preguntas -->
           <div class="col-md-6">
@@ -38,13 +33,20 @@
               <option value="boolean">True / False</option>
             </select>
           </div>
-          <div class="col-md-6">
-            <h5 class="card-title">Seleccione la cantidad de preguntas:</h5>
-            <select class="form-control" id="t-type">
-              <option value="multiple">multiple</option>
-              <option value="boolean">True / False</option>
-            </select>
-          </div>
+          <div class="card mb-3 mt-3 bg-info text-white">
+            <div class="card-body row">
+              <div class="col-md-6">
+                <h5 class="card-title">Seleccione la categoria:</h5>
+                <select class="form-control" id="trivia-categories"></select>
+              </div>
+              <!-- Preguntas -->
+              <div class="col-md-6">
+                <h5 class="card-title">Seleccione el tipo de pregunta:</h5>
+                <select class="form-control" id="t-type">
+                  <option value="multiple">multiple</option>
+                  <option value="boolean">True / False</option>
+                </select>
+              </div>
           <button
             type="submit"
             id="boton1"
