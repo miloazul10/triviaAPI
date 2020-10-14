@@ -4,6 +4,7 @@ const apiCategorias = "https://opentdb.com/api_category.php";
 ///////////// VARIABLES
 const formu1 = document.getElementById("form-type-question");
 const form2 = document.getElementById("form-question");
+const form3 = document.getElementById("trivia-difficulty")
 const visible = document.querySelectorAll(".oculto")[0];
 const oculto = document.querySelector(".btn-visible");
 const resoculto = document.querySelectorAll(".oculto")[1];
@@ -14,6 +15,7 @@ formu1.addEventListener("submit", (e) => {
   e.preventDefault();
   const selectedCategories = document.getElementById("trivia-categories").value;
   const selectedType = document.getElementById("t-type").value;
+  const selectedDifficulty = document.getElementById("trivia-difficulty").value;
   // nuevo llamado a la api
   getQuestion(selectedCategories, selectedType);
   setTimeout(function () {
