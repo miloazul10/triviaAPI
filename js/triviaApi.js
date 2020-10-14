@@ -17,7 +17,7 @@ formu1.addEventListener("submit", (e) => {
   const selectedType = document.getElementById("t-type").value;
   const selectedDifficulty = document.getElementById("trivia-difficulty").value;
   // nuevo llamado a la api
-  getQuestion(selectedCategories, selectedType);
+  getQuestion(selectedCategories, selectedType, selectedDifficulty);
   setTimeout(function () {
     visible.classList.remove("oculto");
   }, 700);
@@ -54,8 +54,8 @@ function printCategories(categories) {
   selectCategories.innerHTML = html;
 }
 // obtener preguntas de la api
-function getQuestion(cat, type) {
-  fetch(`https://opentdb.com/api.php?amount=10&category=${cat}&type=${type}`)
+function getQuestion(cat, type, diffi) {
+  fetch(`https://opentdb.com/api.php?amount=10&category=${cat}&difficulty=${diffi}&type=${type}`)
     .then((res) => res.json())
     .then((dataJson) => {
       printQuestions(dataJson.results);
