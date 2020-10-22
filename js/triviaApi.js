@@ -11,13 +11,14 @@ const resoculto = document.querySelectorAll(".oculto")[1];
 
 ///////////// LISTENERS
 // para obtener y pintar las preguntas y posibles respuestas
-formu1.addEventListener("submit", (e) => {
-  e.preventDefault();
+formu1.addEventListener("submit", (event) => {
+  event.preventDefault();
   const selectedCategories = document.getElementById("trivia-categories").value;
   const selectedType = document.getElementById("t-type").value;
   const selectedDifficulty = document.getElementById("trivia-difficulty").value;
+  const quantity = document.getElementById("quantityInput").value;
   // nuevo llamado a la api
-  getQuestion(selectedCategories, selectedType, selectedDifficulty);
+  getQuestion(quantity, selectedCategories, selectedType, selectedDifficulty);
   setTimeout(function () {
     visible.classList.remove("oculto");
   }, 700);
@@ -54,8 +55,8 @@ function printCategories(categories) {
   selectCategories.innerHTML = html;
 }
 // obtener preguntas de la api
-function getQuestion(cat, type, diffi) {
-  fetch(`https://opentdb.com/api.php?amount=10&category=${cat}&difficulty=${diffi}&type=${type}`)
+function getQuestion(quant, cat, type, diffi) {
+  fetch(`https://opentdb.com/api.php?amount=${quant}&category=${cat}&difficulty=${diffi}&type=${type}`)
     .then((res) => res.json())
     .then((dataJson) => {
       printQuestions(dataJson.results);
@@ -77,9 +78,9 @@ function printQuestions(preguntas) {
                 <label>Question ${pregunta.type} of ${pregunta.category}:<br><b> ${pregunta.question}</b></label>
                 <p>Answer: 
                     <br>
-                    <label><input type="radio" name="respuesta${temp}" value="true" /> ${pregunta.correct_answer} </label>
+                    <label><input type="radio" name="respuesta${temp}" value="true" required> ${pregunta.correct_answer} </label>
                     <br>
-                    <label><input type="radio" name="respuesta${temp}" value="false" /> ${pregunta.incorrect_answers} </label>
+                    <label><input type="radio" name="respuesta${temp}" value="false" required> ${pregunta.incorrect_answers} </label>
                 </p>
                 `;
     } else if (pregunta.type === "multiple") {
@@ -88,13 +89,13 @@ function printQuestions(preguntas) {
                 <label>Question ${pregunta.type} of ${pregunta.category}:<br><b> ${pregunta.question}</b></label>
                 <p>Answer: 
                     <br>
-                    <label><input type="radio" name="respuesta${temp}" value="false" /> ${pregunta.incorrect_answers[1]} </label>
+                    <label><input type="radio" name="respuesta${temp}" value="false" required> ${pregunta.incorrect_answers[1]} </label>
                     <br>
-                    <label><input type="radio" name="respuesta${temp}" value="true" /> ${pregunta.correct_answer} </label>
+                    <label><input type="radio" name="respuesta${temp}" value="true" required> ${pregunta.correct_answer} </label>
                     <br>
-                    <label><input type="radio" name="respuesta${temp}" value="false" /> ${pregunta.incorrect_answers[0]} </label>
+                    <label><input type="radio" name="respuesta${temp}" value="false" required> ${pregunta.incorrect_answers[0]} </label>
                     <br>
-                    <label><input type="radio" name="respuesta${temp}" value="false" /> ${pregunta.incorrect_answers[2]} </label>
+                    <label><input type="radio" name="respuesta${temp}" value="false" required> ${pregunta.incorrect_answers[2]} </label>
                 </p>
                 `;
     }
@@ -121,10 +122,10 @@ function getResp() {
       }
     }
   }
-
+  const totalQuestions = document.getElementById("quantityInput").value;
   tresults.innerHTML = `
     <h3>Estos son los resultados:</h3>
     <h5>Tiene ${sumaresult} respuestas correctas</h5>
-    <h5>Tiene ${10 - sumaresult} respuestas incorrectas</h5>
+    <h5>Tiene ${totalQuestions - sumaresult} respuestas incorrectas</h5>
   `;
 }
